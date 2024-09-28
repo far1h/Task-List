@@ -1,6 +1,6 @@
-<div>
-    Hello I'm a blade template
-</div>
+<h1>
+    The list of tasks
+</h1>
 
 <div>
     @if (count($tasks))
