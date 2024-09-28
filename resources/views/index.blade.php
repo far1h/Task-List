@@ -1,6 +1,12 @@
-Hello I'm a blade template
+<div>
+    Hello I'm a blade template
+</div>
 
-@isset($name)
-<div>The name is: {{ $name }}</div>
-@endisset
+<div>
+    @if (count($tasks))
+        <div>There are tasks!</div>        
+    @else 
+        <div>There are no tasks!</div>
+    @endif
+</div>
 
