@@ -4,15 +4,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('welcome');
-    return "Main Page";
+    return view('index', [
+        'name'=> 'mo'
+    ]);
 });
+
+// blade templates: used to render dynamic content that can differ depending on the data
 
 Route::get("/hello", function () {
     return "Hello";
 })->name("hello");
 
 Route::get("/hallo", function () {
-    return redirect()->route("hello")
+    return redirect()->route("hello");
 });
 
 Route::get("/greet/{name}", function ($name) {
