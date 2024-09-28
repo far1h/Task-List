@@ -60,21 +60,25 @@ Route::get('/', function () use ($tasks){
     return view('index', [
         'tasks' => $tasks
     ]);
-});
+})->name('tasks.index');
 
+Route::get('/{id}', function ($id){
+    return "One single task";
+})->name("tasks.show");
+    
 // blade templates: used to render dynamic content that can differ depending on the data
 
-Route::get("/hello", function () {
-    return "Hello";
-})->name("hello");
+// Route::get("/hello", function () {
+//     return "Hello";
+// })->name("hello");
 
-Route::get("/hallo", function () {
-    return redirect()->route("hello");
-});
+// Route::get("/hallo", function () {
+//     return redirect()->route("hello");
+// });
 
-Route::get("/greet/{name}", function ($name) {
-    return "Hello " . $name . "!" ;
-});
+// Route::get("/greet/{name}", function ($name) {
+//     return "Hello " . $name . "!" ;
+// });
 
 Route::fallback(function () {
     return "Still got somwehere";
