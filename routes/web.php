@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 class Task
@@ -68,12 +69,12 @@ Route::get('/tasks', function () use ($tasks){
 
 Route::get('/tasks/{id}', function ($id) use ($tasks) {
     $task = collect($tasks)->firstWhere('id', $id);
-    if (! $task) {
-        abort(404);
+    if (!$task) {
+        abort(Response::HTTP_NOT_FOUND);
     }
     return view('show', ['task' => $task]);
 })->name("tasks.show");
-    
+
 // blade templates: used to render dynamic content that can differ depending on the data
 
 // Route::get("/hello", function () {
