@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Task as ModelsTask;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
@@ -16,12 +17,20 @@ Route::get('/tasks', function () {
     ]);
 })->name('tasks.index');
 
+//order of routes matter
+Route::view('/tasks/create', 'create')
+->name('tasks.create');
+
 Route::get('/tasks/{id}', function ($id)  {
     return view('show', [
         // 'task' => ModelsTask::find($id)
         'task' => ModelsTask::findOrFail($id)
     ]);
 })->name("tasks.show");
+
+Route::post("/tasks", function (Request $request) {
+    dd($request->all());
+})->name('tasks.store');
 
 // blade templates: used to render dynamic content that can differ depending on the data
 
