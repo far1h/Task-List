@@ -57,6 +57,13 @@ Route::put("/tasks/{task}", function (ModelsTask $task, TaskRequest $request) {
     return redirect()->route("tasks.show", ["task"=> $task->id])->with("success","Task updated successfully!");
 })->name('tasks.update');
 
+Route::delete('/task/{task}', function (ModelsTask $task) {
+    $task->delete();
+
+    return redirect()->route('tasks.index')->with('success','Task deleted successfully!');
+})->name('tasks.destroy');
+
+
 // blade templates: used to render dynamic content that can differ depending on the data
 
 // Route::get("/hello", function () {
